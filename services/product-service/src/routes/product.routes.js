@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const productController = require('../controllers/product.controller');
 
-// Define all the routes (URLs)
+// GET /api/products/search - Search products (MUST be before /:id)
+router.get('/search', productController.searchProducts);
 
 // GET /api/products - Get all products
 router.get('/', productController.getProducts);

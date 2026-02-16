@@ -23,7 +23,7 @@ class ProductController {
   // Handle GET /api/products/:id (get one product)
   async getProduct(req, res) {
     try {
-      const { id } = req.params; // Get ID from URL
+      const { id } = req.params;
       const product = await productService.getProductById(id);
       
       if (!product) {
@@ -49,10 +49,8 @@ class ProductController {
   // Handle POST /api/products (create new product)
   async createProduct(req, res) {
     try {
-      // Get data from request body
       const { name, description, price, stock } = req.body;
       
-      // Validate required fields
       if (!name || !price) {
         return res.status(400).json({
           success: false,
@@ -128,6 +126,35 @@ class ProductController {
       });
     }
   }
-}
+
+  // Handle GET /api/products/search (search products)
+  async searchProducts(req, res) {
+    try {
+      const { q } = req.query;
+      
+      if (!q || q.length < 2) {
+        return res.status(400).json({
+          success: false,
+          message: 'Search query must be at least 2 characters'
+        });
+      }
+
+      const products = await productService.searchProducts(q);
+      
+      res.json({
+        success: true,
+        query: q,
+        count: products.length,
+        data: products
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: 'Failed to search products',
+        error: error.message
+      });
+    }
+  }
+}  // ← Class ends HERE
 
 module.exports = new ProductController();
