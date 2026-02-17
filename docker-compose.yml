@@ -1,6 +1,9 @@
 version: '3.8'
 
 services:
+  # ─────────────────────────────────────
+  # PRODUCT SERVICE DATABASE
+  # ─────────────────────────────────────
   postgres-products:
     image: postgres:15-alpine
     container_name: product-db
@@ -11,8 +14,26 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_products_data:/var/lib/postgresql/data
 
+  # ─────────────────────────────────────
+  # USER SERVICE DATABASE
+  # ─────────────────────────────────────
+  postgres-users:
+    image: postgres:15-alpine
+    container_name: postgres-users
+    environment:
+      POSTGRES_DB: users_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_users_data:/var/lib/postgresql/data
+
+  # ─────────────────────────────────────
+  # REDIS CACHE (shared)
+  # ─────────────────────────────────────
   redis:
     image: redis:7-alpine
     container_name: product-cache
@@ -22,5 +43,6 @@ services:
       - redis_data:/data
 
 volumes:
-  postgres_data:
+  postgres_products_data:
+  postgres_users_data:
   redis_data:
