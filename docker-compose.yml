@@ -32,6 +32,21 @@ services:
       - postgres_users_data:/var/lib/postgresql/data
 
   # ─────────────────────────────────────
+  # ORDER SERVICE DATABASE (MONGODB)
+  # ─────────────────────────────────────
+  mongodb:
+    image: mongo:6
+    container_name: orders-mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: orders_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  # ─────────────────────────────────────
   # REDIS CACHE (shared)
   # ─────────────────────────────────────
   redis:
@@ -45,4 +60,5 @@ services:
 volumes:
   postgres_products_data:
   postgres_users_data:
+  mongodb_data:
   redis_data:
