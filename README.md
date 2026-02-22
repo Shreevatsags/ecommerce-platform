@@ -216,4 +216,5 @@ To install and run this web application, you will need:
 - [pip](https://pypi.org/project/pip/)  
 
 
-## Contibution
+## Designed & Developed by
+* [Shreevatsa](https://github.com/Shreevatsags)
