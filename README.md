@@ -107,7 +107,7 @@ ecommerce-platform/
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/ecommerce-platform.git
+git clone https://github.com/shreevatsags/ecommerce-platform.git
 cd ecommerce-platform
 ```
 
@@ -215,8 +215,5 @@ To install and run this web application, you will need:
 - [Python (3.0 or above)](https://www.python.org/)  
 - [pip](https://pypi.org/project/pip/)  
 
-### Clone the Repository
 
-```sh
-git clone https://github.com/Shreevatsags/ecommerce-platform.git
-cd ecommerce-platform
+## Contibution
