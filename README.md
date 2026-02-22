@@ -208,13 +208,5 @@ Decline: 4000 0000 0000 0002
 
 ---
 
-## Installation Guide
-
-To install and run this web application, you will need:
-
-- [Python (3.0 or above)](https://www.python.org/)  
-- [pip](https://pypi.org/project/pip/)  
-
-
 ## Designed & Developed by
 * [Shreevatsa](https://github.com/Shreevatsags)
